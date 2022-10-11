@@ -1,19 +1,19 @@
 # File: spec/present_spec.rb
 
 require 'present.rb'
-RSpec.describe Present do
+
+describe Present do
   context "when contents is already wrapped" do
     it "fails" do
-      present = Presents.new()
-      present.wrap(contents)
-      expect { contents.wrap() }.to raise_error "contents already wrapped"
+      present = Present.new
+      present.wrap("toy")
+      expect { present.wrap("toy") }.to raise_error "A contents has already been wrapped."
     end
   end
-  context "when contents have been wrapped" do
+  context "when no contents have been wrapped" do
     it "fails" do
-      present = Presents.new()
-      present.wrap(contents)
-      expect { contents.unwrap() }.to raise_error "contents are already wrapped"
+      present = Present.new()
+      expect { present.unwrap }.to raise_error "No contents have been wrapped."
     end
   end
 end
